@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Karty</title>
+    <th:block th:insert="fragments.html :: headcommon"></th:block>
+</head>
+<body>
+<form method="post">
+    <label for="username">Nazwa użytkownika</label>
+    <input name="username" id="username" type="text">
+    <label for="email">Email</label>
+    <input name="email" id="email" type="email">
+    <label for="password">Hasło</label>
+    <input name="password" id="password" type="password">
+    <label for="repeatpassword">Powtorz Hasło</label>
+    <input name="repeatpassword" id="repeatpassword" type="password">
+    <button type="submit">Zarejestruj</button>
+</form>
+
+</body>
+</html>
