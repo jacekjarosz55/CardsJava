@@ -2,13 +2,12 @@ package pl.edu.zse.projectTemplate.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.edu.zse.projectTemplate.model.Card;
 import pl.edu.zse.projectTemplate.model.User;
 import pl.edu.zse.projectTemplate.repostitories.UserRepository;
 
-import javax.xml.bind.DatatypeConverter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService implements IUserService {
@@ -29,6 +28,15 @@ public class UserService implements IUserService {
     @Override
     public void editUser(User user) {
         if (userRepository.existsById(user.getId())) {
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void addCardToUser(User user, Card card) {
+        Set<Card> cards = user.getCards();
+        if(cards.add(card)) {
+            user.setCards(cards);
             userRepository.save(user);
         }
     }

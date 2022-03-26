@@ -17,12 +17,12 @@ public class AuthenticationService implements IAuthenticationService {
     private final UserService userService;
 
     @Resource
-    private final SessionObject userSessionObject;
+    private final SessionObject sessionObject;
 
     @Autowired
-    public AuthenticationService(UserService userService, SessionObject userSessionObject) {
+    public AuthenticationService(UserService userService, SessionObject sessionObject) {
         this.userService = userService;
-        this.userSessionObject = userSessionObject;
+        this.sessionObject = sessionObject;
     }
 
     private String hashPassword(String password) {
@@ -42,7 +42,7 @@ public class AuthenticationService implements IAuthenticationService {
 
     @Override
     public void registerUser(String username, String password, String repeatpassword, String email) {
-        if(!userService.getUserByUsername(username).isPresent()) {
+        if(userService.getUserByUsername(username).isEmpty()) {
             User user = new User(username, hashPassword(password), email, 0);
             System.out.println(user.getHashedpassword());
             userService.addUser(user);
@@ -53,7 +53,7 @@ public class AuthenticationService implements IAuthenticationService {
 
     @Override
     public void logoutUser() {
-        userSessionObject.removeLoggedUser();
+        sessionObject.removeLoggedUser();
         System.out.println("Logged out");
     }
 
@@ -64,7 +64,7 @@ public class AuthenticationService implements IAuthenticationService {
         if (userBox.isPresent()) {
             user = userBox.get();
             if (user.getHashedpassword().equals(hashPassword(password))) {
-                userSessionObject.setLoggedUser(user);
+                sessionObject.setLoggedUser(user);
             }
         }
     }

@@ -46,7 +46,7 @@ public class LoginController {
     @PostMapping(path = "/login")
     public String loginPost(Model model, @RequestParam String username, @RequestParam String password) {
         authService.loginUser(username, password);
-        if(sessionObject.getLoggedUser().isPresent()) {
+        if(sessionObject.isLoggedIn()) {
             return "redirect:/main";
         }
         else{

@@ -11,9 +11,19 @@ public class User {
     @Id
     @GeneratedValue
     protected Long id;
+
+    protected Long coins;
     protected String username;
     protected String hashedpassword;
     protected String email;
+
+    public Set<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
+    }
 
     @ManyToMany
     protected Set<Card> cards;
@@ -31,6 +41,13 @@ public class User {
     public User() {
     }
 
+    public Long getCoins() {
+        return coins;
+    }
+
+    public void setCoins(Long coins) {
+        this.coins = coins;
+    }
     public Long getId() {
         return id;
     }

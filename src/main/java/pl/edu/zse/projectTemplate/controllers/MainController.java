@@ -23,8 +23,10 @@ public class MainController {
 
     @RequestMapping(path = "/main")
     public String mainPage(Model model) {
-        model.addAttribute("user", sessionObject.getLoggedUser())
+        if (sessionObject.isLoggedIn()) {
+            model.addAttribute("user", sessionObject.getLoggedUser());
+        }
         return "main";
     }
-    
+
 }

@@ -1,6 +1,44 @@
-nav  {
-    background-color: magenta;
-    color: white;
+* {
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
 }
 
-.error { color: red; }
+body {
+    background-color:#222;
+    color: #fff;
+    margin:0;
+}
+
+nav {
+    display: flex;
+    background: #333;
+    overflow: hidden;
+    justify-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px black;
+}
+
+nav a {
+    display: block;
+    color: white;
+    margin: 5px 5px;
+    text-decoration:none;
+    padding: 10px;
+    border-radius: 5px;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+nav a.active {
+    color: #a8f;
+}
+
+
+nav a:hover {
+    background-color: #fff1;
+}
+
+nav a#current:hover {
+    background-color: #a8f1;
+}

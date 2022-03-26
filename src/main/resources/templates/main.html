@@ -1,21 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th = "http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Karty</title>
-    <th:block th:include="fragments.html :: headcommon"> </th:block>
-</head>
-<body>
-    <nav>
-        <h1> Gra </h1>
-        <a href="/login"><button id="loginbutton"> Zaloguj się! </button></a>
-        <a href="/register"><button id="registerbutton"> Zarejestruj się! </button></a>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <th:block th:insert="fragments.html :: headdeps"></th:block>
+  </head>
+  <body>
+    <nav th:replace="fragments.html :: navbar">
     </nav>
-    <main>
-        <h1> Gra </h1>
-        <h2 th:if="${user != null}"> Zalogowano jako: <span th:text="${user.getUsername()}"></span> </h2>
-
-    </main>
-
-</body>
+  </body>
 </html>
