@@ -1,8 +1,10 @@
 package pl.edu.zse.projectTemplate.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchUpdateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +15,14 @@ import pl.edu.zse.projectTemplate.session.SessionObject;
 @Controller
 public class LoginController {
     public final IAuthenticationService authService;
-
     public final SessionObject sessionObject;
+
+// TODO: Make this a ControllerAdvice
+    @ModelAttribute
+    public void addUserAttribute(Model model) {
+        model.addAttribute("user", sessionObject.getLoggedUser());
+    }
+
 
     @Autowired
     public LoginController(IAuthenticationService authService, SessionObject sessionObject) {
@@ -23,7 +31,8 @@ public class LoginController {
     }
 
     @RequestMapping(path = "/register")
-    public String registerPage() {
+    public String registerPage(Model model) {
+        model.addAttribute("page", "register");
         return "register";
     }
 
@@ -39,7 +48,8 @@ public class LoginController {
     }
 
     @RequestMapping(path = "/login")
-    public String loginPage() {
+    public String loginPage(Model model) {
+        model.addAttribute("page", "login");
         return "login";
     }
 
@@ -51,6 +61,7 @@ public class LoginController {
         }
         else{
             model.addAttribute("error", "Incorrect login!");
+            model.addAttribute("page", "login");
             return "login";
         }
     }

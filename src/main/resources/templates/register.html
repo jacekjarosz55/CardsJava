@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headdeps">
+</head>
+<body>
+<nav th:replace="fragments.html :: navbar"></nav>
+<main>
+    <h1>Zarejestruj się</h1>
+    <h2>Jeżeli masz już konto, <a href="/login">zaloguj się tutaj.</a></h2>
+    <form id="registerform" method="post">
+        <label for="username">Nazwa użytkownika</label>
+        <input type="text" id="username" name="username">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+
+        <label for="password">Hasło</label>
+        <input type="password" id="password" name="password">
+
+        <label for="repeatpassword">Powtórz hasło</label>
+        <input type="password" id="repeatpassword" name="repeatpassword">
+
+        <button type="submit" class="primarybutton">Zarejestruj się</button>
+    </form>
+
+</main>
+</body>
+</html>

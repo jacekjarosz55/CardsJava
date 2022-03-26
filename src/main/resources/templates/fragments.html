@@ -10,10 +10,11 @@
   </th:block>
 
   <nav th:fragment="navbar">
-      <a href="/main" class="active">Strona główna</a>
-      <a href="/cardpacks">Otwórz paczkę kart!</a>
-      <a href="/logout">Wyloguj się</a>
-      <a href="/login">Zaloguj się</a>
+      <a th:classappend="${page == 'main' ? 'active' : ''}" href="/main">Strona główna</a>
+      <a th:classappend="${page == 'cards' ? 'active' : ''}" th:if="${user != null}" href="/cards">Karty</a>
+      <a th:classappend="${page == 'login' ? 'active' : ''}" th:if="${user == null}" href="/login">Zaloguj się</a>
+      <a th:if="${user != null}" href="/logout">Wyloguj się</a>
+      <a th:classappend="${page == 'contact' ? 'active' : ''}"  href="/contact">Kontakt</a>
   </nav>
 
 </html>

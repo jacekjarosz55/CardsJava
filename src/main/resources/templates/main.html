@@ -6,5 +6,11 @@
   <body>
     <nav th:replace="fragments.html :: navbar">
     </nav>
+    <main>
+      <h1>Eee strona główna</h1>
+      <h2 th:if="${user != null}">
+        Zalogowano jako: <span class="username" th:text="${user.username}"/>
+      </h2>
+    </main>
   </body>
 </html>

@@ -3,11 +3,76 @@
     font-family: "Raleway", sans-serif;
 }
 
+
 body {
     background-color:#222;
-    color: #fff;
+    color: #aaa;
     margin:0;
 }
+
+h1 {
+    color:#fff;
+}
+
+main {
+    margin: 20px;
+}
+
+form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+span.username {
+    color: #a8f;
+}
+
+input:focus{
+    color: #a8f;
+    outline: 2px solid #a8f;
+}
+
+input[type="submit"], input[type="reset"], button {
+    color: white;
+    background-color: #222;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    margin: auto;
+}
+
+input {
+    background-color: #222;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+}
+
+.primarybutton {
+    background-color: #a4f;
+}
+
+
+
+form .input { display:flex; flex-direction: column; gap: 10px;}
+
+
+/*
+form input, form label {
+    display:block;
+}
+*/
+
+
+
+
+
 
 nav {
     display: flex;
@@ -39,6 +104,6 @@ nav a:hover {
     background-color: #fff1;
 }
 
-nav a#current:hover {
+nav a.active:hover {
     background-color: #a8f1;
 }

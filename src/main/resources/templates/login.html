@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headdeps">
+</head>
+<body>
+    <nav th:replace="fragments.html :: navbar">
+    </nav>
+    <main>
+        <h1>Zaloguj się</h1>
+        <h2>Jeżeli nie posiadasz konta, <a href="/register">zarejestruj się tutaj.</a></h2>
+
+        <form id="loginform" method="post">
+            <div class="input">
+                <label for="username">Nazwa użytkownika</label>
+                <input type="text" id="username" name="username">
+            </div>
+
+            <div class="input">
+                <label for="password">Hasło</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <button type="submit" class="primarybutton">Zaloguj</button>
+        </form>
+    </main>
+</body>
+</html>
